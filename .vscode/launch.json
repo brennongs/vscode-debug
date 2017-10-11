@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Node",
+            "program": "${workspaceFolder}/server/main.js"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceRoot}"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Compound",
+            "configurations": ["Node", "Chrome"]
+        }
+    ]
+}
