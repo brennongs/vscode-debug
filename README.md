@@ -41,5 +41,26 @@ In the bottom right corner of the editor workspace, click on the button that rea
 
 ![](https://s1.postimg.org/1fjgul5qa7/Screen_Shot_2017-10-11_at_1.53.57_PM.png)
 
+Notice that the "Add Configuration..." button didn't disappear? That's because we can click it again, and when we do, VSCode will give us a big ol' list of Node debugging configurations. We'll click "Node.js: Launch Program", and violà, we have our first configuration.
+
+![](https://s1.postimg.org/639xxf8gwf/Screen_Shot_2017-10-11_at_2.18.06_PM.png)
+
+The code that appears looks like this:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js"
+        }
+    ],
+    "compounds": []
+}
+```
+The `type` property tells VSCode what kind of debugger to run. `request` defines what to do with the debugger. `name` is how you reference this configuration later on, and `program` is the path to your root file. For example, in a full stack project, if your server file is in `server/server.js`, you'd update the `program` path to `${workspaceFolder}/server/server.js`.
 
 
