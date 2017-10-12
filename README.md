@@ -63,4 +63,8 @@ The code that appears looks like this:
 ```
 The `type` property tells VSCode what kind of debugger to run. `request` defines what to do with the debugger. `name` is how you reference this configuration later on, and `program` is the path to your root file. For example, in a full stack project, if your server file is in `server/server.js`, you'd update the `program` path to `${workspaceFolder}/server/server.js`.
 
+### Application
 
+Now our debugger is set up to debug a Node.js server. Hit <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>d</kbd> to open the debugger menu. At the top, select the play button. Throw a `debugger` in an endpoint and send a request to that endpoint. The code pauses, and if we hover over a variable we can see its value. Hover over `req` and you can see the entire request object!
+
+![](https://s1.postimg.org/7lrjx6fthb/Screen_Shot_2017-10-11_at_4.35.08_PM.png)
