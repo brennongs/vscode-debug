@@ -103,5 +103,27 @@ Throw in a breakpoint by clicking to the left of a line number and refresh your 
 
 ![](https://s1.postimg.org/4wk8kv46vj/Screen_Shot_2017-10-17_at_4.51.00_PM.png)
 
-Chrome will tell you that Visual Studio Code paused the code, which I think is the dopest.
+Chrome will tell you that Visual Studio Code paused the code, which I think is the dopest. You can interact with the code in the same way as when you debug your Node server. Hover over variables to see their definitions, you can interact with the code with Quokka if you have it installed. The world is your oyster.
+
+### Hybrid debugging
+
+So this is cool, but what if we could do both at the same time?
+
+![](https://s1.postimg.org/2vkrfawr7j/Screen_Shot_2017-10-17_at_5.13.55_PM.png)
+
+See the `compounds` property? This will run two debugging processes concurrently. \*Mic drop\*
+
+The `configurations` property is an array with the names of the two configurations you want to run, and `name` is just a string. In the debugger menu drop-down select whichever option mirrors what you called your new compound and click the play button. Now you can string your breakpoints all the way through the stack. Send a request from the front end, make sure that it does what it needs to before it gets passed to your server. Then make sure it successfully gets inserted into the database.
+
+Welcome to the future.
+
+### Additional Resources
+
+[Actual Microsoft Presentation on VSCode Debugger](https://youtu.be/UcW1FHNvy8M)
+
+[VSCode Debugger for Chrome Docs](https://code.visualstudio.com/blogs/2016/02/23/introducing-chrome-debugger-for-vs-code)
+
+[VSCode Debugger for Node.js Docs](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
+
+[Microsoft Docs for general debugging in VSCode](https://code.visualstudio.com/docs/editor/debugging#_debugger-extensions)
 
