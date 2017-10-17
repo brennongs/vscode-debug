@@ -29,7 +29,7 @@ This is a super useful tool. Most browsers come with some version of a debugger 
 
 So now we know what problem we're addressing, and how the problem has been addressed so far. Let's take a look at how to actually use VSCode debugger. We'll see how to use the tool to debug our server-side code first, then how to use it in conjunction with Chrome. Then we'll look at how to use both configurations to debug a full-stack application at the same time. (That's only one window!)
 
-### Configuration
+### Configuration -- Node.js
 
 First thing's first, every project that you are going to set up to use VSCode debugger needs it's own `.vscode` directory with a `launch.json` file in it. I've included an example of the finished product of that file, set up to run both debugging configurations seprately and together, so you can refer back to it as we walk through building our own. There are some properties that are defined in the file that are specific to this process, and I'll define those as we go. For right now, go ahead and make your `.vscode` directory. It's possible you already have one depending on what extensions you're using. Either way, inside `.vscode`, make a `launch.json` file and open it in VSCode.
 
@@ -68,3 +68,40 @@ The `type` property tells VSCode what kind of debugger to run. `request` defines
 Now our debugger is set up to debug a Node.js server. Hit <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>d</kbd> to open the debugger menu. At the top, select the play button. Throw a `debugger` in an endpoint and send a request to that endpoint. The code pauses, and if we hover over a variable we can see its value. Hover over `req` and you can see the entire request object!
 
 ![](https://s1.postimg.org/7lrjx6fthb/Screen_Shot_2017-10-11_at_4.35.08_PM.png)
+
+This can also be accomplished by clicking to the left of the line number for the line you want to pause on. You will see a red dot appear, and when you run your code it will respond the same way.
+
+### Configuration -- Chrome
+
+Let's take a look at how to use VSCode debugger with Google Chrome. For this one you'll need an extension. Hit <kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>x</kbd> to open the extensions menu, and search "debugger chrome". The first hit is the correct one. Click the green `install` button and reload the window.
+
+![](https://s1.postimg.org/51mg9era33/Screen_Shot_2017-10-17_at_1.04.10_PM.png)
+
+Now open your `.vscode/launch.json`, click "Add Configuration..." and you'll see that we have two new additions to our list: "Chrome: Attach", and "Chrome: Launch".
+
+![](https://s1.postimg.org/9tji6ojif3/Screen_Shot_2017-10-17_at_1.09.23_PM.png)
+
+#### Attach & Launch
+
+We see the same options for our Node config -- "Attach" and "Launch". They mean just what you'd think. "Attach" will run the debugger along with an already running `debug` instance of your code, whether that's Node or front-end code through Chrome. "Launch" starts a new `debug` instance with whatever tools you'll need.
+
+Now, it's pretty easy to run your back end in `debug` mode -- simply run `node path/to/your/server.js --debug`. But what about Chrome? Chrome is the render tool for our front end code, and in order to attach our VSCode debugger to it, we'll need to first determine how to run Chrome in `debug` mode.
+
+The answer requires your terminal. You'll need to run this command:
+```bash
+$ sudo /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+```
+I've set this to an alias `chrome` in my `~/.bash_profile`, so when I want to debug front end code it's just a matter of six keystrokes to start up the right Chrome. The reason I've done so is that I have yet to figure out how to run VSCode Debugger unless it's an "Attach" request. /shrug.
+
+### Application
+
+That said, click "Add Configuration..." and select "Chrome: Attach". Now when we start up our app, we can select the "Attach to Chrome" option in the debug dropdown (<kbd>cmd</kbd> + <kbd>shift</kbd> + <kbd>d</kbd>), click the play button and the debugger will start. **If it doesn't work, try restarting your terminal script.** 
+
+![](https://s1.postimg.org/5eaa9fv2db/Screen_Shot_2017-10-17_at_5.04.18_PM.png)
+
+Throw in a breakpoint by clicking to the left of a line number and refresh your Chrome page.
+
+![](https://s1.postimg.org/4wk8kv46vj/Screen_Shot_2017-10-17_at_4.51.00_PM.png)
+
+Chrome will tell you that Visual Studio Code paused the code, which I think is the dopest.
+
