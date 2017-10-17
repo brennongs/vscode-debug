@@ -1,6 +1,6 @@
 # An Intro to VSCode Debugging
 
-Visual Studio has a long history of built-in debugging support, and that is no different with VSCode. The debugger shipped with VSCode supports Node.js debugging for server-side code, front end development, Electron desktop apps, and . This walkthrough will show you the basics of the VSCode debugger.
+Visual Studio has a long history of built-in debugging support, and that is no different with VSCode. The debugger shipped with VSCode supports Node.js debugging for server-side code, front end development, Electron desktop apps, and tons more. This walkthrough will show you the basics of the VSCode debugger.
 
 *For this walkthrough, I assume you already have a project that you want to try this on, so I haven't provided an example project.*
 
